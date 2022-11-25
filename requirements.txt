@@ -1,0 +1,8 @@
+ansible>=6
+molecule>=4.0.3
+molecule-vagrant>=1.0.0
+ansible-lint==6.9.0
+cryptography>=3.0
+yamllint
+python-vagrant
+pyOpenSSL

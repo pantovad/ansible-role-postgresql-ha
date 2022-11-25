@@ -13,7 +13,7 @@ skip_list:
   - no-changed-when
   - no-handler
   - empty-string-compare
-  - name
-  - fqcn
+  - name[casing]
+  - fqcn-builtins
 warn_list:
   - no-log-password
