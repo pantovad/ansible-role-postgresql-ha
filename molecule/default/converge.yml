@@ -16,4 +16,4 @@
           "repmgr_target_group": "{{ repmgr_target_group }}"
           "repmgr_node_id": "{{ repmgr_node_id }}"
   roles:
-    - name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}"
+    - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}"

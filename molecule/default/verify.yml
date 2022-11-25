@@ -1,5 +1,6 @@
 ---
-- hosts: pgcluster
+- name: Verify
+  hosts: pgcluster
   become: yes
   gather_facts: yes
 

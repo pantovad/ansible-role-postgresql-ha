@@ -5,7 +5,7 @@ galaxy_info:
   namespace: fidanf
   role_name: postgresql_ha
   description: Install and configure PostgreSQL cluster managed with repmgr. Add dependencies, extensions, databases and users.
-  min_ansible_version: 2.10
+  min_ansible_version: '2.12'
   license: MIT
   platforms:
     - name: Debian
@@ -26,6 +26,5 @@ galaxy_info:
     - postgis
     - debian
     - ubuntu
-
 collections:
   - community.crypto
