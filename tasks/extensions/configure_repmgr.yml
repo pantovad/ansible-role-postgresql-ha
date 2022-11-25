@@ -6,7 +6,7 @@
     owner: "{{ postgresql_service_user }}"
     group: "{{ postgresql_service_group }}"
     mode: 0640
-  notify: reload repmgr
+  notify: Reload repmgr
 
 - name: Repmgr | Upload logrotate configuration
   ansible.builtin.template:
@@ -58,7 +58,7 @@
 
 - name: Repmgr | Generate an SSH keypair locally
   community.crypto.openssh_keypair:
-    path: "{{ lookup('config','DEFAULT_LOCAL_TMP') | dirname }}/postgres_id_rsa"
+    path: "{{ lookup('config', 'DEFAULT_LOCAL_TMP') | dirname }}/postgres_id_rsa"
     backend: cryptography
     regenerate: partial_idempotence
     size: "{{ repmgr_ssh_key_bits }}"
@@ -86,7 +86,7 @@
 
 - name: Repmgr | Upload private key on all nodes
   ansible.builtin.copy:
-    src: "{{ lookup('config','DEFAULT_LOCAL_TMP') | dirname }}/postgres_id_rsa"
+    src: "{{ lookup('config', 'DEFAULT_LOCAL_TMP') | dirname }}/postgres_id_rsa"
     dest: "{{ repmgr_private_key_path }}"
     owner: "{{ postgresql_service_user }}"
     group: "{{ postgresql_service_group }}"

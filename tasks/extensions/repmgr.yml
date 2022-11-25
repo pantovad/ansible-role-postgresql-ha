@@ -19,9 +19,9 @@
 
 - name: PostgreSQL | Extensions | Make sure the postgres repmgr extensions are installed | apt
   ansible.builtin.apt:
-    name: "{{ repmgr_apt_name | default ('postgresql-' + postgresql_version|string + '-repmgr' ) }}"
+    name: "{{ repmgr_apt_name | default('postgresql-' + postgresql_version | string + '-repmgr') }}"
     state: present
     update_cache: yes
-    cache_valid_time: "{{ apt_cache_valid_time | default (3600) }}"
+    cache_valid_time: "{{ apt_cache_valid_time | default(3600) }}"
   when: ansible_pkg_mgr == "apt"
-  notify: restart postgresql
+  notify: Restart postgresql

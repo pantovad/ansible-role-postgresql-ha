@@ -111,7 +111,7 @@
     group: "{{ postgresql_service_group }}"
     mode: 0640
   register: postgresql_configuration_pt4
-  notify: restart postgresql
+  notify: Restart postgresql
 
 - name: PostgreSQL | Create folder for additional configuration files
   ansible.builtin.file:
@@ -128,7 +128,7 @@
     owner: "{{ postgresql_service_user }}"
     group: "{{ postgresql_service_group }}"
     mode: u=rwX,g=rwXs,o=rx
-  notify: restart postgresql
+  notify: Restart postgresql
 
 - name: PostgreSQL | Reload all conf files
   ansible.builtin.shell: 
