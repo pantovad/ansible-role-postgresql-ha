@@ -68,7 +68,7 @@ collections:
 
 ### Example Inventory
 
-See [inventory.yml](./inventory.yml) for detailed group and host vars.
+See [inventory.yml](./inventory.example.yml) for detailed group and host vars.
 
 ### Role variables
 
