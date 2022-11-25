@@ -6,26 +6,26 @@
 
   pre_tasks:
     - name: Wait for SSH
-      wait_for_connection:
+      ansible.builtin.wait_for_connection:
 
     - name: Gather facts for the first time
-      setup:
+      ansible.builtin.setup:
 
     - name: Install python dependencies
-      apt: 
+      ansible.builtin.apt: 
         name: 
           - python3-apt
         update_cache: yes
 
     - name: Use python3 by default
-      alternatives: 
+      community.general.system.alternatives: 
         path: /usr/bin/python3
         link: /usr/bin/python
         name: python
         priority: 1
 
     - name: Build hosts file
-      lineinfile: 
+      ansible.builtin.lineinfile: 
         path: /etc/hosts 
         regexp: '.*{{ item }}$'
         line: "{{ hostvars[item].ansible_eth1.ipv4.address }} {{ item }}"
@@ -35,5 +35,5 @@
       loop: "{{ groups[repmgr_target_group] }}"
 
     - name: Install acl package
-      apt: 
+      ansible.builtin.apt: 
         name: acl

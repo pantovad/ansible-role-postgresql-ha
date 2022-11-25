@@ -1,6 +1,6 @@
 ---
 - name: PostgreSQL | Update the user privileges
-  postgresql_user:
+  community.postgresql.postgresql_user:
     name: "{{ item.name }}"
     db: "{{ item.db | default(omit) }}"
     port: "{{ postgresql_port }}"

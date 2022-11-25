@@ -1,4 +1,3 @@
 ---
 # PostgreSQL vars for Ubuntu Bionic (18.04LTS)
 postgresql_systemctl_path: /bin
-repmgr_version_debian: 5.2.1-1.bionic+1

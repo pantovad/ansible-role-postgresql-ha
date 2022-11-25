@@ -1,6 +1,6 @@
 ---
 - name: PostgreSQL | Check binary version
-  shell:
+  ansible.builtin.shell:
     cmd: |
       set -o pipefail
       psql --version | sed 's/^psql (//' | sed 's/)//' | awk '{print $1, $2}'
@@ -13,7 +13,7 @@
   check_mode: no
 
 - name: PostgreSQL | Check database version
-  shell:
+  ansible.builtin.shell:
     cmd: |
       set -o pipefail
       psql --quiet --tuples-only --port={{ postgresql_port | int }} --command="select substring(version(),'[^\s]+\s+[^\s]+');" | sed 's/^ //'
@@ -26,8 +26,8 @@
   check_mode: no
 
 - name: PostgreSQL | Verify binary and database versions match
-  debug:
+  ansible.builtin.debug:
     msg: "WARNING: Binary ({{ postgresql_binary_version.stdout }}) and Database ({{ postgresql_database_version.stdout }}) version mismatch. Restart required!"
   when: postgresql_binary_version.stdout != postgresql_database_version.stdout
   changed_when: postgresql_binary_version.stdout != postgresql_database_version.stdout
-  notify: restart postgresql
+  notify: Restart postgresql
