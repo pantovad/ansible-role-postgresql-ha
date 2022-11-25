@@ -1,13 +1,13 @@
 ---
 - name: Install contrib extensions
-  import_tasks: extensions/contrib.yml
+  ansible.builtin.import_tasks: extensions/contrib.yml
   when: postgresql_ext_install_contrib
 - name: Install development headers
-  import_tasks: extensions/dev_headers.yml
+  ansible.builtin.import_tasks: extensions/dev_headers.yml
   when: postgresql_ext_install_dev_headers
 - name: Install Postgis extension
-  import_tasks: extensions/postgis.yml
+  ansible.builtin.import_tasks: extensions/postgis.yml
   when: postgresql_ext_install_postgis
 - name: Install Repmgr
-  import_tasks: extensions/repmgr.yml
+  ansible.builtin.import_tasks: extensions/repmgr.yml
   when: postgresql_ext_install_repmgr and ansible_service_mgr == 'systemd'

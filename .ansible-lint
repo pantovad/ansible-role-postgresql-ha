@@ -14,6 +14,5 @@ skip_list:
   - no-handler
   - empty-string-compare
   - name[casing]
-  - fqcn-builtins
 warn_list:
   - no-log-password
