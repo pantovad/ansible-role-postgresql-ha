@@ -30,7 +30,7 @@
 
 - name: PostgreSQL | Ensure the locale for lc_collate and lc_ctype is generated | Debian
   become: yes
-  locale_gen: 
+  community.general.system.locale_gen: 
     name: "{{ item }}"
     state: present
   with_items:

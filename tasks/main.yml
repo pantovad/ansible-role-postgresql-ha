@@ -16,38 +16,49 @@
     - "../vars/empty.yml"
   tags: [always]
 
-- import_tasks: install_apt.yml
+- name: Install PostgreSQL with apt
+  import_tasks: install_apt.yml
   when: ansible_pkg_mgr == "apt"
   tags: [postgresql, postgresql-install]
 
-- import_tasks: extensions.yml
+- name: Install PostgreSQL extensions
+  import_tasks: extensions.yml
   tags: [postgresql, postgresql-extensions]
 
-- import_tasks: extensions/detect_repmgr_primary.yml
+- name: Detect Repmgr primary
+  import_tasks: extensions/detect_repmgr_primary.yml
   when: postgresql_ext_install_repmgr and ansible_service_mgr == 'systemd'
   tags: [postgresql, postgresql-extensions]
 
-- import_tasks: fdw.yml
+- name: Install Foreign Data Wrappers
+  import_tasks: fdw.yml
   tags: [postgresql, postgresql-fdw]
 
-- import_tasks: configure.yml
+- name: Configure PostgreSQL
+  import_tasks: configure.yml
   tags: [postgresql, postgresql-configure]
 
-- import_tasks: users.yml
+- name: Create PostgreSQL users
+  import_tasks: users.yml
   tags: [postgresql, postgresql-users]
 
-- import_tasks: databases.yml
+- name: Create PostgreSQL databases
+  import_tasks: databases.yml
   tags: [postgresql, postgresql-databases]
 
-- import_tasks: schemas.yml
+- name: Create PostgreSQL schemass
+  import_tasks: schemas.yml
   tags: [postgresql, postgresql-schemas]
 
-- import_tasks: users_privileges.yml
+- name: Configure PostgreSQL users privileges
+  import_tasks: users_privileges.yml
   tags: [postgresql, postgresql-users]
 
-- import_tasks: extensions/configure_repmgr.yml
+- name: Configure Repmgr
+  import_tasks: extensions/configure_repmgr.yml
   when: postgresql_ext_install_repmgr and ansible_service_mgr == 'systemd'
   tags: [postgresql, postgresql-extensions]
 
-- import_tasks: check_pg_version_mismatch.yml
+- name: Check PostgreSQL version mismatch
+  import_tasks: check_pg_version_mismatch.yml
   tags: [postgresql, postgresql-version-mismatch]

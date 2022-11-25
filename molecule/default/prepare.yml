@@ -18,7 +18,7 @@
         update_cache: yes
 
     - name: Use python3 by default
-      alternatives: 
+      community.general.system.alternatives: 
         path: /usr/bin/python3
         link: /usr/bin/python
         name: python
