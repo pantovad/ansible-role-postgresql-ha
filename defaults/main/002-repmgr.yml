@@ -7,7 +7,7 @@ repmgr_database: repmgr
 repmgr_conninfo: "host={{ ansible_hostname }} user={{ repmgr_user }} dbname={{ repmgr_database }} connect_timeout=2"
 repmgr_data_directory: "{{ postgresql_data_directory }}"
 # Loads the matching configuration file located in role's templates folder 
-repmgr_version: 5.3
+repmgr_version: 5.4
 
 # Optional configuration items
 #

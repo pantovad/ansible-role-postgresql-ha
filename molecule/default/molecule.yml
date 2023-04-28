@@ -13,7 +13,7 @@ driver:
     name: libvirt
 platforms:
   - name: pgsql01
-    box: ${MOLECULE_DISTRO:-"generic/debian11"}
+    box: ${MOLECULE_DISTRO:-"generic/ubuntu2004"}
     groups: 
       - pgcluster
     config_options:
@@ -27,7 +27,7 @@ platforms:
         ip: 192.168.30.2
         auto_config: true
   - name: pgsql02
-    box: ${MOLECULE_DISTRO:-"generic/debian11"}
+    box: ${MOLECULE_DISTRO:-"generic/ubuntu2004"}
     config_options:
       ssh.keep_alive: yes
       ssh.remote_user: "'vagrant'"
@@ -61,9 +61,9 @@ provisioner:
   inventory:
     group_vars:
       pgcluster: 
-        postgresql_version: ${POSTGRESQL_VERSION:-"13"}
+        postgresql_version: ${POSTGRESQL_VERSION:-"14"}
         postgresql_port: 5432
-        repmgr_version: ${REPMGR_VERSION:-"5.3"}
+        repmgr_version: ${REPMGR_VERSION:-"5.4"}
         repmgr_master: pgsql01
         repmgr_target_group: pgcluster
         postgresql_service_user: postgres
