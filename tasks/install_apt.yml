@@ -58,7 +58,6 @@
     cmd: |
       systemctl disable postgresql
     executable: /bin/bash
-    warn: no
 
 - name: PostgreSQL | Start postgresql using pg_ctlcluster binary
   ansible.builtin.shell: 
