@@ -48,7 +48,7 @@
 
 - name: PostgreSQL | Stop and disable systemd postgresql.service
   ansible.builtin.service:
-    name: "postgresql@{{ postgresql_version }}-{{ postgresql_cluster_name }}"
+    name: postgresql.service
     state: stopped
     enabled: no
 
