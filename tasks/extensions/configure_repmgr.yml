@@ -178,4 +178,5 @@
     name: Purges repmgr.monitoring_history table
     job: "repmgr cluster cleanup --keep-history={{ repmgr_keep_history_days }}"
     special_time: daily
+    user: "{{ postgresql_admin_user }}"
   when: repmgr_monitoring_history and repmgr_failover == 'automatic'
