@@ -29,8 +29,8 @@
   when: postgresql_log_directory != "pg_log"
 
 - name: PostgreSQL | Ensure the locale for lc_collate and lc_ctype is generated | Debian
-  become: yes
-  community.general.system.locale_gen: 
+  become: true
+  community.general.locale_gen: 
     name: "{{ item }}"
     state: present
   with_items:
